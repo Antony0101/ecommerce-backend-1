@@ -12,6 +12,7 @@ import {
 } from "../../utils/emails/forgotPassword.email.js";
 import UserModel from "../../models/user.model.js";
 import { ClientSession } from "mongoose";
+import { USER_ROLE_ENUM } from "../../utils/enums.utils.js";
 
 async function loginController(req: Request, res: Response) {
     const { email, password } = req.body;
@@ -80,6 +81,7 @@ async function signUpController(
                     password: hashedPassword,
                     firstName,
                     lastName,
+                    role: USER_ROLE_ENUM.USER,
                     phoneNo,
                 },
             ],
@@ -148,8 +150,8 @@ async function logoutController(req: Request, res: Response) {
 }
 
 async function forgotPasswordStartController(req: Request, res: Response) {
-    const { email, role } = req.body;
-    const user = await UserModel.findOne({ email, role });
+    const { email } = req.body;
+    const user = await UserModel.findOne({ email });
     if (!user) {
         throw generateAPIError("No user exist with this email", 404);
     }
