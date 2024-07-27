@@ -8,7 +8,7 @@ import mongoSanitize from "express-mongo-sanitize";
 import notFoundMiddleware from "./lib/middleware/not-found.js";
 import errorHandler from "./lib/middleware/errorHandler.js";
 import indexRouter from "./routers/index.router.js";
-import connectDB from "./utils/connectDB.js";
+import connectDB from "./utils/connectDB.utils.js";
 import { generalVersions } from "./config/versions.js";
 import mongoose from "mongoose";
 
