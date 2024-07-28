@@ -20,6 +20,10 @@ const productSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        color: {
+            type: String,
+            required: true,
+        },
         category: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "categories",
